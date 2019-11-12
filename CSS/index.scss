@@ -1,0 +1,16 @@
+// 手机页面上面 按钮点击事件的时候有阴影 
+*{ -webkit-tap-highlight-color: rgba(0,0,0,0);-webkit-tap-highlight-color: transparent; /* For some Androids */ }
+
+//  水平垂直居中(不知道宽高)
+.wrap{
+    padding:10px;
+    background:green;
+    color:#fff;
+    position:absolute;
+    top:50%;
+    left:50%;
+    border-radius: 5px;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    transform:translate(-50%,-50%);
+}
