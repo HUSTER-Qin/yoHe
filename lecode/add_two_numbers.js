@@ -6,50 +6,45 @@
  * }
  */
 /**
+ * 输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
+   输出：7 -> 0 -> 8
+  原因：342 + 465 = 807
  * @param {ListNode} l1
  * @param {ListNode} l2
  * @return {ListNode}
  */
-class Node {
-  constructor(val) {
-    this.head = null;
-    this.val = val;
-    this.next = null;
-  }
-  push(val) {
-    if (!this.head) {
-      this.head = new Node(val);
-      return this;
-    }
-    let newNode = new Node(val);
-    newNode.next = this.head;
-    this.head = newNode;
-    return this;
-  }
-  pop() {
-    this.head = this.head.next;
-  }
-  show() {
-    let node = this.head;
-    while (node) {
-      console.log(node.val);
-      node = node.next;
-    }
+class ListNode {
+  constructor() {
+
   }
 }
 
-let l1 = new Node()
-  .push(3)
-  .push(4)
-  .push(2);
-l1.show();
-var addTwoNumbers = function(l1, l2) {};
 
-let test = addTwoNumbers;
+const addTwoNumbers = function (l1, l2) {
+  let curL1 = l1;
+  let curL2 = l2;
+  const root = new ListNode();
+  let cur = root;
+  let res = '';
+  let temp = '';
+  while (curL1 || curL2 || temp) {
+    curL1 = curL1 || {};
+    curL2 = curL2 || {};
+    temp += ~~curL1.val + ~~curL2.val;
+    res += (temp % 10);
+    cur.next = new ListNode((temp % 10));
+    cur = cur.next;
+    temp = temp > 9;
+    curL1 = curL1.next;
+    curL2 = curL2.next;
+  }
+  console.log(res);
+  return root.next;
+};
 
 function sumBigNumber(a, b) {
-  var res = '',
-    temp = 0;
+  let res = '';
+  let temp = 0;
   a = a.split('');
   b = b.split('');
   while (a.length || b.length || temp) {
@@ -61,5 +56,5 @@ function sumBigNumber(a, b) {
   return res.replace(/^0+/, '');
 }
 
-let a = sumBigNumber('3782647863278468012934670', '23784678091370408971329048718239749083');
-console.log(a)
+const a = sumBigNumber('3782647863278468012934670', '23784678091370408971329048718239749083');
+console.log(a);

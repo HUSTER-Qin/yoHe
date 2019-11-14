@@ -1,51 +1,50 @@
-var ua = navigator.userAgent;
-var platform = navigator.platform;
+const ua = navigator.userAgent;
+const { platform } = navigator;
 
-var os = {},
-  browser = {},
-  webkit = ua.match(/Web[kK]it[\/]{0,1}([\d.]+)/),
-  android = ua.match(/(Android);?[\s\/]+([\d.]+)?/) || ua.match(/MiVideo/i),
-  osx = !!ua.match(/\(Macintosh\; Intel /),
-  ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
-  ipod = ua.match(/(iPod)(.*OS\s([\d_]+))?/),
-  iphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
-  webos = ua.match(/(webOS|hpwOS)[\s\/]([\d.]+)/),
-  win = /Win\d{2}|Windows/.test(platform),
-  wp = ua.match(/Windows Phone ([\d.]+)/),
-  touchpad = webos && ua.match(/TouchPad/),
-  kindle = ua.match(/Kindle\/([\d.]+)/),
-  silk = ua.match(/Silk\/([\d._]+)/),
-  blackberry = ua.match(/(BlackBerry).*Version\/([\d.]+)/),
-  bb10 = ua.match(/(BB10).*Version\/([\d.]+)/),
-  rimtabletos = ua.match(/(RIM\sTablet\sOS)\s([\d.]+)/),
-  playbook = ua.match(/PlayBook/),
-  chrome = ua.match(/Chrome\/([\d.]+)/) || ua.match(/CriOS\/([\d.]+)/),
-  firefox = ua.match(/Firefox\/([\d.]+)/),
-  firefoxos = ua.match(/\((?:Mobile|Tablet); rv:([\d.]+)\).*Firefox\/[\d.]+/),
-  ie =
-    ua.match(/MSIE\s([\d.]+)/) ||
-    ua.match(/Trident\/[\d](?=[^\?]+).*rv:([0-9.].)/),
-  webview = !chrome && ua.match(/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/),
-  safari = ua.match(
-    /Version\/([\d.]+)([^S](Safari)|[^M]*(Mobile)[^S]*(Safari))/
-  );
+const os = {};
+const browser = {};
+const webkit = ua.match(/Web[kK]it[\/]{0,1}([\d.]+)/);
+const android = ua.match(/(Android);?[\s\/]+([\d.]+)?/) || ua.match(/MiVideo/i);
+const osx = !!ua.match(/\(Macintosh\; Intel /);
+const ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
+const ipod = ua.match(/(iPod)(.*OS\s([\d_]+))?/);
+const iphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/);
+const webos = ua.match(/(webOS|hpwOS)[\s\/]([\d.]+)/);
+const win = /Win\d{2}|Windows/.test(platform);
+const wp = ua.match(/Windows Phone ([\d.]+)/);
+const touchpad = webos && ua.match(/TouchPad/);
+const kindle = ua.match(/Kindle\/([\d.]+)/);
+const silk = ua.match(/Silk\/([\d._]+)/);
+const blackberry = ua.match(/(BlackBerry).*Version\/([\d.]+)/);
+const bb10 = ua.match(/(BB10).*Version\/([\d.]+)/);
+const rimtabletos = ua.match(/(RIM\sTablet\sOS)\s([\d.]+)/);
+const playbook = ua.match(/PlayBook/);
+const chrome = ua.match(/Chrome\/([\d.]+)/) || ua.match(/CriOS\/([\d.]+)/);
+const firefox = ua.match(/Firefox\/([\d.]+)/);
+const firefoxos = ua.match(/\((?:Mobile|Tablet); rv:([\d.]+)\).*Firefox\/[\d.]+/);
+const ie = ua.match(/MSIE\s([\d.]+)/)
+    || ua.match(/Trident\/[\d](?=[^\?]+).*rv:([0-9.].)/);
+const webview = !chrome && ua.match(/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/);
+const safari = ua.match(
+  /Version\/([\d.]+)([^S](Safari)|[^M]*(Mobile)[^S]*(Safari))/,
+);
 browser.webkit = !!webkit;
 if (browser.webkit) {
   browser.version = webkit[1];
 }
 
 if (android) {
-  (os.android = true), (os.version = android[2] || "");
+  (os.android = true), (os.version = android[2] || '');
 }
 if (iphone && !ipod) {
-  (os.ios = os.iphone = true), (os.version = iphone[2].replace(/_/g, "."));
+  (os.ios = os.iphone = true), (os.version = iphone[2].replace(/_/g, '.'));
 }
 if (ipad) {
-  (os.ios = os.ipad = true), (os.version = ipad[2].replace(/_/g, "."));
+  (os.ios = os.ipad = true), (os.version = ipad[2].replace(/_/g, '.'));
 }
 if (ipod) {
   (os.ios = os.ipod = true),
-    (os.version = ipod[3] ? ipod[3].replace(/_/g, ".") : null);
+  (os.version = ipod[3] ? ipod[3].replace(/_/g, '.') : null);
 }
 if (wp) {
   (os.wp = true), (os.version = wp[1]);
@@ -100,38 +99,37 @@ if (webview) {
 }
 os.version = parseFloat(os.version);
 
-browser.ucbrowser = ua.match(/ucbrowser/gi) ? true : false;
+browser.ucbrowser = !!ua.match(/ucbrowser/gi);
 browser.lark = /lark/i.test(ua);
 browser.qq = /qq[^browser]/gi.test(ua);
 browser.inWebview = browser.qq || browser.toutiao || browser.lark;
-browser.qqbrowser = ua.match(/qqbrowser/gi) ? true : false;
+browser.qqbrowser = !!ua.match(/qqbrowser/gi);
 browser.weixin = ua.toLowerCase().match(/MicroMessenger/i);
 browser.liteh5 = /liteh5/i.test(ua);
 browser.iqiyi = /iqiyi/i.test(ua);
-(browser.iphoneX =
-  /iphone/gi.test(ua) && (screen.height == 812 && screen.width == 375)),
-  (os.tablet = !!(
-    ipad ||
-    playbook ||
-    (android && !ua.match(/Mobile/)) ||
-    (firefox && ua.match(/Tablet/)) ||
-    (ie && !ua.match(/Phone/) && ua.match(/Touch/))
-  ));
+(browser.iphoneX = /iphone/gi.test(ua) && (screen.height == 812 && screen.width == 375)),
+(os.tablet = !!(
+  ipad
+    || playbook
+    || (android && !ua.match(/Mobile/))
+    || (firefox && ua.match(/Tablet/))
+    || (ie && !ua.match(/Phone/) && ua.match(/Touch/))
+));
 os.phone = !!(
-  !os.tablet &&
-  !os.ipod &&
-  (android ||
-    iphone ||
-    webos ||
-    blackberry ||
-    bb10 ||
-    (chrome && ua.match(/Android/)) ||
-    (chrome && ua.match(/CriOS\/([\d.]+)/)) ||
-    (firefox && ua.match(/Mobile/)) ||
-    (ie && ua.match(/Touch/)))
+  !os.tablet
+  && !os.ipod
+  && (android
+    || iphone
+    || webos
+    || blackberry
+    || bb10
+    || (chrome && ua.match(/Android/))
+    || (chrome && ua.match(/CriOS\/([\d.]+)/))
+    || (firefox && ua.match(/Mobile/))
+    || (ie && ua.match(/Touch/)))
 );
 
 module.exports = {
-  os: os,
-  browser: browser
+  os,
+  browser,
 };

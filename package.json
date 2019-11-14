@@ -1,0 +1,35 @@
+{
+  "name": "yohe",
+  "version": "1.0.0",
+  "description": "your future is created by what you do today not tomorrow",
+  "main": ".eslintrc.js",
+  "dependencies": {
+    "prettier": "^1.19.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-config-recommended": "^4.0.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HUSTER-Qin/yoHe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HUSTER-Qin/yoHe/issues"
+  },
+  "homepage": "https://github.com/HUSTER-Qin/yoHe#readme"
+}
