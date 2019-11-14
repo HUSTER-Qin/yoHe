@@ -38,7 +38,6 @@ const addTwoNumbers = function (l1, l2) {
     curL1 = curL1.next;
     curL2 = curL2.next;
   }
-  console.log(res);
   return root.next;
 };
 
