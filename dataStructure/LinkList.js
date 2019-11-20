@@ -1,3 +1,4 @@
+// 单链表结构
 // eslint-disable-next-line max-classes-per-file
 class Node {
   constructor(val) {
@@ -74,14 +75,22 @@ class LinkList {
       ++j;
     }
     if (!node.next || j > i) return false;
-    const p = node.next;
+    let p = node.next;
     node.next = p.next;
+    p = null;
     this.len--;
     return p;
   }
 
   clearList() {
     this.len = 0;
+    // this.head = new Node(null);
+    let node = this.head.next;
+    while (node) {
+      const p = node.next;
+      node = null;
+      node = p;
+    }
     this.head = new Node(null);
   }
 
@@ -102,8 +111,11 @@ class LinkList {
 const list = new LinkList();
 list.push(12);
 list.push(143);
-console.log(list);
+// console.log(list);
 list.listInsert(2, 456);
+// list.show();
+// list.listDelete(2);
 list.show();
-list.listDelete(2);
+list.clearList();
+
 list.show();
