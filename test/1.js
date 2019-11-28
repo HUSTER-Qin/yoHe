@@ -1,9 +1,4 @@
 
-const a = function (str, b) {
-  console.log(b);
-  str = str.replace(str[1], 'rt');
-  return str;
-};
+let imp = require('./u')
 
-console.log(a('abcd', 'er'));
-console.log(a.length);
+console.log('imp', imp)
