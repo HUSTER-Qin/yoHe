@@ -39,8 +39,6 @@ function insertSort(a) {
 				exch(a, j, j - 1)
 			}
 		}	
-		
-
 	}
 	return a
 }
@@ -49,23 +47,26 @@ function insertSort2(a) {
 	let cur = null
 	let j = 0
 	for (let i = 1; i < a.length; i++) {
-		temp = a[i]
+		cur = a[i]
 		j = i
-		while (j > 0 && less(a[j - 1], temp)) {
+		while (j > 0 && less(a[j - 1], cur)) {
 			a[j] = a[j - 1]
 			j--
 		}
+		// 此时存在 cur 比前面的小
 		if (j != i) {
-			a[j] = temp
+			a[j] = cur
 		}
 	}
+	console.log(this);
+	
 	return a
 }
 
 // insertSort(Random(10))
-insertSort(['S', 'O', "R", "T", "E", "X", "A", "M", "P", "L", "E"])
+// insertSort(['S', 'O', "R", "T", "E", "X", "A", "M", "P", "L", "E"])
 
-insertSort2(['S', 'O', "R", "T", "E", "X", "A", "M", "P", "L", "E"])
+// insertSort2(['S', 'O', "R", "T", "E", "X", "A", "M", "P", "L", "E"])
 
 
 
@@ -100,3 +101,14 @@ function show(params) {
  * @param {Array} params 
  */
 function isSorted(params) { }
+
+function time(str, a) {
+	console.time(str)
+	if (str === "insertSort") insertSort(a)
+	if (str === "selectionSort") selectionSort(a)	
+	console.timeEnd(str)
+}
+
+let a = ['S', 'O', "R", "T", "E", "X", "A", "M", "P", "L", "E"]
+time('insertSort', a)
+time('selectionSort',a)
