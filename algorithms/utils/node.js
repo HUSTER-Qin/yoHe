@@ -6,4 +6,4 @@ class Node {
 
 }
 
-exports.Node = Node
+module.exports = exports = Node
