@@ -4,10 +4,10 @@ const Queue = require('./queue')
 
 const Stack = require('./stack')
 
-const Random = require('./random')
+const tools = require('./tools')
 module.exports = {
 	Readline,
 	Queue,
 	Stack,
-	Random
+	tools
 }

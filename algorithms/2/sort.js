@@ -1,5 +1,6 @@
 
-const { Random } = require('../utils')
+
+let { tools } = require('../utils')
 /**
  * 选择排序
  * - 运行时间和输入无关
@@ -11,20 +12,16 @@ function selectionSort(a) {
 	for (let i = 0; i < a.length; i++) {
 		min = i
 		for (let j = i; j < a.length; j++) {
-			if (less(a[min], a[j])) {
+			if (tools.less(a[min], a[j])) {
 				// 记录最小位置
 				min = j
 			}
 		}
 		// 交换元素
-		exch(a, i, min)
+		tools.exch(a, i, min)
 	}
 	return a
 }
-// sort(Random(10))
-// selectionSort(['S', 'O', "R", "T", "E", "X", "A", "M", "P", "L", "E"])
-
-
 /**
  * 将元素与已经左边排序好的 挨个比较直到 排到头
  * 插入排序
@@ -34,22 +31,26 @@ function selectionSort(a) {
 function insertSort(a) {
 	let order = 0
 	for (let i = 1; i < a.length; i++) {
-		for (let j = i; j > 0 ; j--) {
-			if (less(a[j - 1], a[j])) {
-				exch(a, j, j - 1)
+		for (let j = i; j > 0; j--) {
+			if (tools.less(a[j - 1], a[j])) {
+				tools.exch(a, j, j - 1)
 			}
-		}	
+		}
 	}
 	return a
 }
 
+/**
+ * 插入排序：移动位置
+ * @param {*} a 
+ */
 function insertSort2(a) {
 	let cur = null
 	let j = 0
 	for (let i = 1; i < a.length; i++) {
 		cur = a[i]
 		j = i
-		while (j > 0 && less(a[j - 1], cur)) {
+		while (j > 0 && tools.less(a[j - 1], cur)) {
 			a[j] = a[j - 1]
 			j--
 		}
@@ -58,57 +59,36 @@ function insertSort2(a) {
 			a[j] = cur
 		}
 	}
-	console.log(this);
-	
+	// console.log(a);
+
 	return a
 }
-
-// insertSort(Random(10))
-// insertSort(['S', 'O', "R", "T", "E", "X", "A", "M", "P", "L", "E"])
-
-// insertSort2(['S', 'O', "R", "T", "E", "X", "A", "M", "P", "L", "E"])
-
-
-
 /**
- * 比较两个元素
- * @param {*} v 
- * @param {*} w 
+ * 希尔排序
+ * 	- 基于插入排序的快速排序方法	
+ * @param {*} params 
  */
-function less(v, w) {
-	return v > w
-}
-
-/**
- * 交换元素
- * @param {Array} a 
- * @param {Number} i 
- * @param {Number} j 
- */
-function exch(a, i, j) {
-	[a[i], a[j]] = [a[j], a[i]]
-}
-/**
- * 单行打印数组
- * @param {Array} params 
- */
-function show(params) {
-
-
-}
-/**
- * 测试数据是否有序
- * @param {Array} params 
- */
-function isSorted(params) { }
-
-function time(str, a) {
-	console.time(str)
-	if (str === "insertSort") insertSort(a)
-	if (str === "selectionSort") selectionSort(a)	
-	console.timeEnd(str)
+function shellSort(arr) {
+	var len = arr.length;
+	for (var h = Math.floor(len / 2); h > 0; h = Math.floor(h / 2)) {
+		for (var i = h; i < len; i++) {
+			for (var j = i ; j >= 0 && tools.less(arr[j-h], arr[j]); j -= h) {
+				tools.exch(arr, j-h, j)
+			}
+		}
+	}
+	return arr
 }
 
 let a = ['S', 'O', "R", "T", "E", "X", "A", "M", "P", "L", "E"]
-time('insertSort', a)
-time('selectionSort',a)
+a = tools.random(100000)
+
+tools.time(selectionSort, [...a])
+tools.time(insertSort2, [...a])
+tools.time(shellSort, [...a])
+
+
+
+
+
+// shellSort(['S', 'O', "R", "T", "E", "X", "A", "M", "P", "L", "E"])
