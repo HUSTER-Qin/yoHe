@@ -1,7 +1,12 @@
 
 let { tools } = require('../utils')
 
-
+/**
+ * 插入排序
+ * - 将当前位置与之前排好序的每个位置进行比较
+ * - 如果比当前位置大则交换
+ * @param {Array} a 
+ */
 function insertSort(a) {
 	for (let i = 0; i < a.length; i++) {
 		for (let j = i; j > 0; j--) {
@@ -10,10 +15,14 @@ function insertSort(a) {
 			}
 		}
 	}
-	console.log(a);
-	
 }
-
+/**
+ * 插入排序
+ * - 将当前的值与之前排好序的比较
+ * - 如果比当前位置的值大，则记录该位置直到第一个没有比他大的值则退出循环
+ * - 将当前值插入到该位置
+ * @param {Array} a 
+ */
 function insertSort2(a) {
 	let cur = 0
 	let j = 0
@@ -28,12 +37,14 @@ function insertSort2(a) {
 			a[j] = cur
 		}
 	}
-	console.log(a);
+	return  a
+	// console.log(a);
 
 }
 /**
  * 希尔排序
  * 	- 基于插入排序的快速排序方法
+ *  - 实际是改变步长
  *  - 数量越大越有优势 
  * @param {*} a 
  */
@@ -50,23 +61,42 @@ function shellSort(a) {
 		}
 		h = Math.floor(h / 2)
 	}
-	console.log(a);
+	return a
+	// console.log(a);
 }
 function shellSort2(arr) {
 	var len = arr.length;
 	for (var h = Math.floor(len / 2); h > 0; h = Math.floor(h / 2)) {
 		for (var i = h; i < len; i++) {
-			for (var j = i ; j >= 0 && tools.less(arr[j-h], arr[j]); j -= h) {
+			for (var j = i; j >= 0 && tools.less(arr[j - h], arr[j]); j -= h) {
 				tools.exch(arr, j-h, j)
 			}
 		}
 	}
-	console.log(arr);
-	
 	return arr
 }
-let a = tools.random(100000)
-tools.time(insertSort, [...a])
-tools.time(insertSort2, [...a])
+let shellSort3 = function (arr) {
+	let len = arr.length
+	let cur = null
+	let index = 0
+	for (var h = Math.floor(len / 2); h > 0; h = Math.floor(h / 2)) {
+		for (let i = h; i < len; i++) {
+			cur = arr[i]
+			index = i
+			for (let j = i; j > 0&&less(arr[j - h], cur); j-=h) {
+					arr[j] = arr[j - h]
+					index = j-h
+			}
+			if (index != i) {
+				arr[index] = cur
+			}
+			
+		}
+	}
+	return arr
+}
+let a = tools.random(10)
+// tools.time(insertSort, [...a])
+// tools.time(insertSort2, [...a])
 tools.time(shellSort, [...a])
 tools.time(shellSort2,[...a])

@@ -80,12 +80,11 @@ function shellSort(arr) {
 	return arr
 }
 
-let a = ['S', 'O', "R", "T", "E", "X", "A", "M", "P", "L", "E"]
-a = tools.random(100000)
 
-tools.time(selectionSort, [...a])
-tools.time(insertSort2, [...a])
-tools.time(shellSort, [...a])
+// mergeSort(a, 0, a.length - 1)
+// tools.time(selectionSort, [...a])
+// tools.time(insertSort2, [...a])
+// tools.time(shellSort, [...a])
 
 
 
