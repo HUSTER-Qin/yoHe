@@ -48,6 +48,7 @@ function insertSort2(a) {
  *  - 数量越大越有优势 
  * @param {*} a 
  */
+// 相连两位的移动
 function shellSort(a) {
 	let len = a.length
 	let h = Math.floor(len / 2)
@@ -64,6 +65,7 @@ function shellSort(a) {
 	return a
 	// console.log(a);
 }
+// 相连两位的交换
 function shellSort2(arr) {
 	var len = arr.length;
 	for (var h = Math.floor(len / 2); h > 0; h = Math.floor(h / 2)) {
@@ -75,6 +77,8 @@ function shellSort2(arr) {
 	}
 	return arr
 }
+// 比当前大的向后移动一位覆盖，
+// 将当前一位插入到最后一次被移动的位置
 let shellSort3 = function (arr) {
 	let len = arr.length
 	let cur = null
