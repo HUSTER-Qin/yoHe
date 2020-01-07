@@ -153,3 +153,12 @@ function throttle(fn, interval = 300) {
     }, interval);
   };
 }
+
+/**
+ * 获取字符长度【区分双字节字符】
+ * 将str中的双字节字符转换到两个单字节 计算长度
+ * @param {*} str 
+ */
+function strLen(str) {
+  return str.replace(/[^\x00-\xff]/g, "**").length 
+}
