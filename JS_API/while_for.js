@@ -1,5 +1,6 @@
 
 // while b比for 更快
+// 除了forin 有明显的慢 其他几个都差不多（forin 会遍历原型对象）
 function testWhile(a) {
 	let index = 0
 	while (index<a.length) {
