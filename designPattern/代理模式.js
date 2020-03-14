@@ -1,25 +1,26 @@
-class Subject{
+class Subject {
 }
 
-class Math extends Subject{
-	say() {
-		console.log('Math');	
-	}
+class Math1 extends Subject {
+  say () {
+    console.log('Math')
+  }
 }
 
-class Proxy extends Subject{
-	constructor() {
-		super()
-		this.real = null
-	}
-	say() {
-		if (this.real === null) {
-			this.real = new Math()
-		}
-		this.real.say()
-	}
+class Proxy extends Subject {
+  constructor () {
+    super()
+    this.real = null
+  }
+
+  say () {
+    if (this.real === null) {
+      this.real = new Math1()
+    }
+    this.real.say()
+  }
 }
 
-let pro = new Proxy()
+const pro = new Proxy()
 
 pro.say()
