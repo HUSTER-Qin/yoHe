@@ -2,13 +2,18 @@
   <div id="app">
 	  APP
     <div>sddadasd</div>
+    <!-- <router-link :to="{path:'/item/3'}"></router-link> -->
+    <h1>路由</h1>
+    <home></home>
+    <!-- <router-view></router-view> -->
   </div>
 </template>
 <script>
+import Home from './components/Home'
 export default {
   name: "",
   props: {},
-  components: {},
+  components: {Home},
   computed: {},
   watch: {},
   data() {

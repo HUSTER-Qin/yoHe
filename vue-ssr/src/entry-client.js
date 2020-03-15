@@ -1,5 +1,7 @@
-import { createApp } from './app.js';
+import { createApp } from './app'
 
-const { app } = createApp();
-
-app.$mount('#app');
+const { app , store} = createApp()
+app.$mount('#app')
+// router.onReady(() => {
+  
+// })
