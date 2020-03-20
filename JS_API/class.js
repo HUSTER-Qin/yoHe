@@ -1,4 +1,4 @@
-const a = class {
+const a =class {
   constructor (html) {
     this.html = html
   }

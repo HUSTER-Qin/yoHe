@@ -29,3 +29,5 @@ var getSingle = function (fn) {
     return result || (result = fn.apply(this, arguments))
 	}
 }
+
+
