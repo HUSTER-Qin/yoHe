@@ -4,6 +4,7 @@
   "description": "your future is created by what you do today not tomorrow",
   "main": ".eslintrc.js",
   "dependencies": {
+    "@types/node": "^13.9.3",
     "prettier": "^1.19.1"
   },
   "devDependencies": {

@@ -12,7 +12,7 @@ class Component {
 class Composite extends Component {
   constructor (name) {
     super()
-    this.name = name = name
+    this.name = name
     this.list = new Set()
   }
 

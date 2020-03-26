@@ -1,15 +1,30 @@
-function sealed(constructor: Function) {
+@sealed
+class Greeter {
+    greeting: string;
+    constructor(message: string) {
+        this.greeting = message;
+    }
+    greet() {
+        return "Hello, " + this.greeting;
+    }
+}
+
+function sealed (constructor: Function) {
+    console.log(123);
+    
   Object.seal(constructor);
   Object.seal(constructor.prototype);
-  console.log(123);
-  
 }
 
-@sealed
-class MyClass {
-  a: number = 0;
-  b: string = "hello";
-}
+const x = new Greeter('nihao')
+console.log(x.greet());
 
-var obj = new MyClass();
-// obj.c = true; // 编译报错
+
+let m = new Set()
+m.add(1)
+m.add(2)
+
+for (const item of m) {
+    console.log(m);
+    
+}
