@@ -1,4 +1,3 @@
-import { log } from "util";
 
 
 class Barbecurer{
