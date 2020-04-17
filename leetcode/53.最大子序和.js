@@ -14,8 +14,9 @@
  * @return {number}
  */
 var maxSubArray = function (nums) {
-	let sum = 0	
-	let max = 0
+	if(nums.length<2) return nums[0]
+	let sum = 0
+	let max = nums[0]
 	for (const num of nums) {
 		if (sum > 0) {
 			sum+=num
@@ -29,3 +30,4 @@ var maxSubArray = function (nums) {
 // @lc code=end
 
 
+console.log(maxSubArray([-1]));
