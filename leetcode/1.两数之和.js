@@ -21,13 +21,13 @@ var twoSum = function(nums, target) {
 	// 	}
 		
 	// }
-	let t = []
+	let m = new Map()
 	for (let i = 0; i < nums.length; i++) {
 		let diff = target - nums[i]
-		if (t[diff]!==undefined) {
-			return [t[diff], i]
+		if (m.has(diff)) {
+			return [m.get(diff), i]
 		}
-		t[nums[i]] = i		
+		m.set(nums[i],i)
 	}
 };
 // @lc code=end
