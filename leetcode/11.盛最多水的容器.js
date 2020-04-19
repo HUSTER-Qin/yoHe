@@ -14,8 +14,8 @@ var maxArea = function(height) {
 	console.log(arr);
 	console.log(height);
 	
-	let m1 = height.findIndex(arr[arr.length-1])
-	let m2 = height.findIndex(arr[arr.length - 2])
+	let m1 = height.findIndex(item=>item === arr[arr.length-1])
+	let m2 = height.findIndex(item=>item === arr[arr.length-2])
 	return arr[arr.length-2]*Math.abs((m1-m2))
 };
 // @lc code=end

@@ -1,9 +1,9 @@
 
 class BitNode {
-  constructor(data) {
-    this.data = data;
-    this.lChild = null;
-    this.rChild = null;
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
   }
 }
 class Tree {
@@ -21,9 +21,9 @@ class Tree {
       if (str[i] === '#') {
         return null;
       }
-      node.data = str[i];
-      node.lChild = fun();
-      node.rChild = fun();
+      node.val = str[i];
+      node.left = fun();
+      node.right = fun();
       return node;
     };
     return fun();
@@ -37,9 +37,9 @@ class Tree {
    */
   static PreOrderTraverse(tree) {
     if (!tree) return null;
-    console.log(tree.data);
-    this.PreOrderTraverse(tree.lChild);
-    this.PreOrderTraverse(tree.rChild);
+    console.log(tree.val);
+    this.PreOrderTraverse(tree.left);
+    this.PreOrderTraverse(tree.right);
   }
 
   /**
@@ -50,9 +50,9 @@ class Tree {
    */
   static InOrderTraverse(tree) {
     if (!tree) return null;
-    this.PreOrderTraverse(tree.lChild);
-    console.log(tree.data);
-    this.PreOrderTraverse(tree.rChild);
+    this.PreOrderTraverse(tree.left);
+    console.log(tree.val);
+    this.PreOrderTraverse(tree.right);
   }
 
   /**
@@ -63,12 +63,47 @@ class Tree {
    */
   static PostOrderTraverse(tree) {
     if (!tree) return null;
-    this.PreOrderTraverse(tree.lChild);
-    this.PreOrderTraverse(tree.rChild);
-    console.log(tree.data);
+    this.PreOrderTraverse(tree.left);
+    this.PreOrderTraverse(tree.right);
+    console.log(tree.val);
   }
 }
 
-const str = 'AB#D##C##';
-const tree = Tree.createBiTree(str);
-console.log(tree);
+const p = 'AB#D##C##';
+const q = 'AB#D##C##';
+const ptree = Tree.createBiTree(p);
+const qtree = Tree.createBiTree(q);
+// console.log(tree);
+// [100] 相同的树
+var isSameTree = function (p, q) {
+	const check = function (p, q) {
+		if (!p && !q) {
+			return true
+		}
+		if (!p || !q) {
+			return false
+		}
+		if (p.val != q.val) {
+			return false
+    }
+    return true
+	}
+	if (!check(p, q)) {
+		return false
+	}
+	let arr = []
+	arr.push([p,q])
+	while (arr.length>0) {
+		let [p,q] = arr.pop()
+		if (!check(p, q)) {
+			return false
+		}
+    if (p) {
+      arr.push([p.left, q.left])
+		  arr.push([p.right,q.right])
+    }
+	}
+	return true
+};
+
+console.log(isSameTree(ptree,qtree))

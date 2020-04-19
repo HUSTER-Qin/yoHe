@@ -11,17 +11,26 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-	for (let i = 0; i < nums.length; i++) {
-		for (let j = i+1; j < nums.length; j++) {
-			if (nums[i] + nums[j] === target) {
-				return [i,j]
-
-				break
-			}
+	// for (let i = 0; i < nums.length; i++) {
+	// 	for (let j = i+1; j < nums.length; j++) {
+	// 		if (nums[i] + nums[j] === target) {
+	// 			return [i,j]
+	// 			break
+	// 		}
 			
-		}
+	// 	}
 		
+	// }
+	let t = []
+	for (let i = 0; i < nums.length; i++) {
+		let diff = target - nums[i]
+		if (t[diff]!==undefined) {
+			return [t[diff], i]
+		}
+		t[nums[i]] = i		
 	}
 };
 // @lc code=end
+
+console.log(twoSum([2,7,11,15],9));
 
