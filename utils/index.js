@@ -4,7 +4,7 @@
  * @param {分割的原数组} array
  * @param {每个子数组的长度} size
  */
-function sliceArray(array, size) {
+function sliceArray (array, size) {
   const result = [];
   for (let x = 0; x < Math.ceil(array.length / size); x++) {
     const start = x * size;
@@ -17,7 +17,7 @@ function sliceArray(array, size) {
  * 计算单词个数
  * @param {文本字符串} value
  */
-function wordStatic(value) {
+function wordStatic (value) {
   // 获取文本框对象
   if (value) {
     // 替换中文字符为空格
@@ -42,7 +42,7 @@ function wordStatic(value) {
  * @param {数字字符串} l1
  * @param {数字字符串} l2
  */
-const bigNumber = function (l1, l2) {
+const bignumber = function (l1, l2) {
   l1 = l1.split('');
   l2 = l2.split('');
   let temp = 0; let
@@ -56,7 +56,7 @@ const bigNumber = function (l1, l2) {
   }
   return res;
 };
-// let a = bigNumber('3782647863278468012934670', '23784678091370408971329048718239749083');
+// let a = bignumber('3782647863278468012934670', '23784678091370408971329048718239749083');
 
 /**
  * 生成uuid
@@ -74,15 +74,15 @@ const uuid = function () {
   }
   return uuidVal;
 };
-const generateUUID= function() {
+const generateUUID = function () {
   var d = new Date().getTime();
   if (window.performance && typeof window.performance.now === "function") {
-      d += performance.now(); //use high-precision timer if available
+    d += performance.now(); //use high-precision timer if available
   }
   var uuid = 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-      var r = (d + Math.random() * 16) % 16 | 0;
-      d = Math.floor(d / 16);
-      return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    var r = (d + Math.random() * 16) % 16 | 0;
+    d = Math.floor(d / 16);
+    return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
   });
   return uuid;
 }
@@ -93,29 +93,68 @@ const generateUUID= function() {
  * 阿拉伯数字 转中文大小写
  * @param {阿拉伯数字} num
  */
-const toChinesNum = function (num) {
-  const changeNum = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九']; // changeNum[0] = "零"
-  const unit = ['', '十', '百', '千', '万'];
-  // eslint-disable-next-line radix
-  num = parseInt(num, 10);
-  const getWan = (temp) => {
-	  // eslint-disable-next-line no-mixed-spaces-and-tabs
-	  const strArr = temp.toString().split('').reverse();
-	  let newNum = '';
-	  for (let i = 0; i < strArr.length; i++) {
-      newNum = (i === 0 && strArr[i] === 0
-		    ? ''
-		    : i > 0 && strArr[i] === 0 && strArr[i - 1] === 0
-		      ? ''
-		      : changeNum[strArr[i]] + (strArr[i] === 0 ? unit[0] : unit[i]))
-		  + newNum;
-	  }
-	  return newNum;
-  };
-  const overWan = Math.floor(num / 10000);
-  let noWan = num % 10000;
-  if (noWan.toString().length < 4) noWan = `0${noWan}`;
-  return overWan ? `${getWan(overWan)}万${getWan(noWan)}` : getWan(num);
+const toChinesnum = function (num) {
+  for (var i = num.length - 1; i >= 0; i--) {
+    num = num.replace(",", "")//替换num中的“,”
+    num = num.replace(" ", "")//替换num中的空格
+  }
+  if (isNaN(num)) { //验证输入的字符是否为数字
+    //alert("请检查小写金额是否正确");
+    return;
+  }
+  //字符处理完毕后开始转换，采用前后两部分分别转换
+  var part = String(num).split(".");
+  var newchar = "";
+  //小数点前进行转化
+  for (i = part[0].length - 1; i >= 0; i--) {
+    if (part[0].length > 10) {
+      //alert("位数过大，无法计算");
+      return "";
+    }//若数量超过拾亿单位，提示
+    var tmpnewchar = ""
+    var perchar = part[0].charAt(i);
+    switch (perchar) {
+      case "0": tmpnewchar = "零" + tmpnewchar; break;
+      case "1": tmpnewchar = "一" + tmpnewchar; break;
+      case "2": tmpnewchar = "二" + tmpnewchar; break;
+      case "3": tmpnewchar = "三" + tmpnewchar; break;
+      case "4": tmpnewchar = "四" + tmpnewchar; break;
+      case "5": tmpnewchar = "五" + tmpnewchar; break;
+      case "6": tmpnewchar = "六" + tmpnewchar; break;
+      case "7": tmpnewchar = "七" + tmpnewchar; break;
+      case "8": tmpnewchar = "八" + tmpnewchar; break;
+      case "9": tmpnewchar = "九" + tmpnewchar; break;
+    }
+    switch (part[0].length - i - 1) {
+      case 0: tmpnewchar = tmpnewchar; break;
+      case 1: if (perchar != 0) tmpnewchar = tmpnewchar + "十"; break;
+      case 2: if (perchar != 0) tmpnewchar = tmpnewchar + "百"; break;
+      case 3: if (perchar != 0) tmpnewchar = tmpnewchar + "千"; break;
+      case 4: tmpnewchar = tmpnewchar + "万"; break;
+      case 5: if (perchar != 0) tmpnewchar = tmpnewchar + "十"; break;
+      case 6: if (perchar != 0) tmpnewchar = tmpnewchar + "百"; break;
+      case 7: if (perchar != 0) tmpnewchar = tmpnewchar + "千"; break;
+      case 8: tmpnewchar = tmpnewchar + "亿"; break;
+      case 9: tmpnewchar = tmpnewchar + "十"; break;
+    }
+    newchar = tmpnewchar + newchar;
+  }
+  //替换所有无用汉字，直到没有此类无用的数字为止
+  while (newchar.search("零零") != -1 || newchar.search("零亿") != -1 || newchar.search("亿万") != -1 || newchar.search("零万") != -1) {
+    newchar = newchar.replace("零亿", "亿");
+    newchar = newchar.replace("亿万", "亿");
+    newchar = newchar.replace("零万", "万");
+    newchar = newchar.replace("零零", "零");
+  }
+  //替换以“一十”开头的，为“十”
+  if (newchar.indexOf("一十") == 0) {
+    newchar = newchar.substr(1);
+  }
+  //替换以“零”结尾的，为“”
+  if (newchar.lastIndexOf("零") == newchar.length - 1) {
+    newchar = newchar.substr(0, newchar.length - 1);
+  }
+  return newchar;
 };
 
 /**
@@ -123,7 +162,7 @@ const toChinesNum = function (num) {
  * @param {元素} elem
  * @param {光标位置} index
  */
-function setCursorPosition(elem, index) {
+function setCursorPosition (elem, index) {
   console.log(elem.setSelectionRange);
   const val = elem.value;
   const len = val.length;
@@ -144,9 +183,9 @@ function setCursorPosition(elem, index) {
 }
 
 //函数防抖
-function debounce(fn, interval = 300) {
+function debounce (fn, interval = 300) {
   let timeout = null;
-  return function() {
+  return function () {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       fn.apply(this, arguments);
@@ -155,9 +194,9 @@ function debounce(fn, interval = 300) {
 }
 
 // 函数节流
-function throttle(fn, interval = 300) {
+function throttle (fn, interval = 300) {
   let canRun = true;
-  return function() {
+  return function () {
     if (!canRun) return;
     canRun = false;
     setTimeout(() => {
@@ -172,6 +211,6 @@ function throttle(fn, interval = 300) {
  * 将str中的双字节字符转换到两个单字节 计算长度
  * @param {*} str 
  */
-function strLen(str) {
-  return str.replace(/[^\x00-\xff]/g, "**").length 
+function strLen (str) {
+  return str.replace(/[^\x00-\xff]/g, "**").length
 }
