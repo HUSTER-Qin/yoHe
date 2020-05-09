@@ -20,16 +20,20 @@ var reverse = function (x) {
   //   sys = 0
   // }
   // return sys
-  if (x > (Math.pow(2, 31) - 1) || x < -Math.pow(2, 31)) {
-    return 0
-  }
+  
+  let single = ""
+  if(x<0) single = '-'
+  x = Math.abs(x)
   let y = 0
   while (x != 0) {
     y = y * 10 + x%10
     x = Math.floor(x / 10)
   }
-  return y
+  if (y > (Math.pow(2, 31) - 1) || y < -Math.pow(2, 31)) {
+    return 0
+  }
+  return Number(single + y)
 }
 
 // @lc code=end
-console.log(reverse(123));
+console.log(reverse(-123));
