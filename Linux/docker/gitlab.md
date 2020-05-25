@@ -22,6 +22,7 @@ mkdir -p /srv/gitlab/data
 
 ```sh
 $ docker run --detach \
+  --link 
   --hostname yohe.gitlab.com \
   --publish 8443:443 --publish 8880:80 --publish 8222:22 \
   --name gitlab \
