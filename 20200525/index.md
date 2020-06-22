@@ -677,3 +677,86 @@ delete array[1];
 - 完全隐藏：元素从渲染树中消失，不占据空间。
 - 视觉上的隐藏：屏幕中不可见，占据空间。
 - 语义上的隐藏：读屏软件不可读，但正常占据空。
+
+# 实现filter
+
+```js
+Array.prototype.filter = Array.prototype.filter || function filter (fn, context) {
+	if (typeof fn !== 'function') {
+		throw new Error(`${fn} is not function`)
+	}
+	let arr = this
+	let t = []
+	for (let i = 0; i < arr.length; i++) {
+		let res = fn.call(context, arr[i], i, arr)
+		if(res) t.push(arr[i])
+	}
+	return t
+}
+```
+
+# flat
+
+(参考)[https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/flat]
+
+# delete 数组
+delete 数组没有任何效果
+
+```js
+let a = ['a']
+delete a
+coonsole.log(a.length) // [ 'a' ]
+console.log(a); // 1
+```
+
+# HTTP劫持、DNS劫持与XSS
+
+### http劫持
+
+大多数情况是运营商HTTP劫持，当我们使用HTTP请求请求一个网站页面的时候，网络运营商会在正常的数据流中插入精心设计的网络数据报文，让客户端（通常是浏览器）展示“错误”的数据，通常是一些弹窗，宣传性广告或者直接显示某网站的内容，大家应该都有遇到过。
+
+### DNS劫持
+
+DNS 劫持就是通过劫持了 DNS 服务器，通过某些手段取得某域名的解析记录控制权，进而修改此域名的解析结果，导致对该域名的访问由原IP地址转入到修改后的指定IP，其结果就是对特定的网址不能访问或访问的是假网址，从而实现窃取资料或者破坏原有正常服务的目的
+
+### XSS跨站脚本
+
+XSS指的是攻击者利用漏洞，向 Web 页面中注入恶意代码，当用户浏览该页之时，注入的代码会被执行，从而达到攻击的特殊目的。
+
+
+
+# 为什么循环列表key最好不要用index
+
+移动元素和删除元素带来的 开销不一致
+
+```
+变化前数组的值是[1,2,3,4]，key就是对应的下标：0，1，2，3
+变化后数组的值是[4,3,2,1]，key对应的下标也是：0，1，2，3
+```
+
+- 那么diff算法在变化前的数组找到key =0的值是1，在变化后数组里找到的key=0的值是4
+- 因为子元素不一样就重新删除并更新
+- 但是如果加了唯一的key,如下
+
+```
+变化前数组的值是[1,2,3,4]，key就是对应的下标：id0，id1，id2，id3
+变化后数组的值是[4,3,2,1]，key对应的下标也是：id3，id2，id1，id0
+```
+
+- 那么diff算法在变化前的数组找到key =id0的值是1，在变化后数组里找到的key=id0的值也是1
+- 因为子元素相同，就不删除并更新，只做移动操作，这就提升了性能
+
+# 子串的查找 KMP
+
+
+
+# webpack 打包 vue 速度太慢
+
+1. webpack-bundle-analyze
+2. externals
+3. DllPlugin
+4. CDN 配合
+5. HappyPack
+
+# vue 变异数组
+

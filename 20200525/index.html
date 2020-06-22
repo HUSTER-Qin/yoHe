@@ -4,8 +4,18 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	<script>
+		function resizeWindow(){
+    if (window.screen) {//判断浏览器是否支持window.screen判断浏览器是否支持screen     
+      var myw = screen.availWidth;   //定义一个myw，接受到当前全屏的宽     
+      var myh = screen.availHeight;  //定义一个myw，接受到当前全屏的高     
+      window.moveTo(0, 0);           //把window放在左上脚     
+      window.resizeTo(myw, myh);     //把当前窗体的长宽跳转为myw和myh     
+    } 
+   }
+	</script>
 </head>
-<body>
+<body onload="resizeWindow();">
 	
 	<div>
 		<div>1</div>
