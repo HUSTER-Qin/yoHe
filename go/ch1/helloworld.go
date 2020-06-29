@@ -1,2 +1,7 @@
-package ch1
+package main
 
+func main() {
+
+	
+	
+}
