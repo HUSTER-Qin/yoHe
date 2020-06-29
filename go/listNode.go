@@ -1,6 +1,8 @@
 
 package main
 
+import "fmt"
+
 type ListNode struct {
 	val int
 	Next  *ListNode
@@ -18,6 +20,5 @@ func main() {
 	for  ; i<10;i++  {
 		list.Next = &ListNode{arr[i],nil}
 	}
-
-
+	fmt.Println(list)
 }
