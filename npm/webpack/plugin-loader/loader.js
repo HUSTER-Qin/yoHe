@@ -1,5 +1,5 @@
-const hljs = require('highlight');
-const MarkdownIt = require('markdown-it');
+const hljs = require('./highlight');
+const MarkdownIt = require('./markdown-it');
 
 const wrapper = content => `
 <template>
