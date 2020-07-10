@@ -17,10 +17,9 @@
  * @return {boolean}
  */
 var isValidBST = function (root) {
-    let value = Number.MIN_VALUE
+    let value = Number.NEGATIVE_INFINITY
     const func = function name(root) {
-        if (!root) return true
-        
+        if (root === null || root === undefined) return true
         if (!func(root.left)) {
             return false
         }

@@ -1,0 +1,12 @@
+[
+    {
+        "name": "v1.0.0",
+        "zipball_url": "https://api.github.com/repos/zhu-cli/easy-webpack-demo/zipball/v1.0.0",
+        "tarball_url": "https://api.github.com/repos/zhu-cli/easy-webpack-demo/tarball/v1.0.0",
+        "commit": {
+            "sha": "c80d47caba2dcdb471fe37919f330c9653f0306c",
+            "url": "https://api.github.com/repos/zhu-cli/easy-webpack-demo/commits/c80d47caba2dcdb471fe37919f330c9653f0306c"
+        },
+        "node_id": "MDM6UmVmMjE0MzY2MTcyOnJlZnMvdGFncy92MS4wLjA="
+    }
+]

@@ -1,0 +1,12 @@
+[
+    {
+        "name": "1.0",
+        "zipball_url": "https://api.github.com/repos/zhu-cli/vue-template/zipball/1.0",
+        "tarball_url": "https://api.github.com/repos/zhu-cli/vue-template/tarball/1.0",
+        "commit": {
+            "sha": "0a74dbac5dfceaec24aef20b3649bd6aed537d46",
+            "url": "https://api.github.com/repos/zhu-cli/vue-template/commits/0a74dbac5dfceaec24aef20b3649bd6aed537d46"
+        },
+        "node_id": "MDM6UmVmMjA0ODg5MzAyOnJlZnMvdGFncy8xLjA="
+    }
+]
