@@ -1,6 +1,6 @@
 class Node {
     constructor(value) {
-        this.value = value
+        this.val = value
         this.left = null
         this.right = null
     }
@@ -17,7 +17,7 @@ class Tree {
         }
         let current = this.root
         while (current) {
-            if (val < current.value) {     
+            if (val < current.val) {     
                 if (!current.left) {
                     current.left = new Node(val)
                     return
@@ -35,4 +35,7 @@ class Tree {
     }
 }
 
-module.exports = Tree
+module.exports = {
+    Tree,
+    Node
+};
