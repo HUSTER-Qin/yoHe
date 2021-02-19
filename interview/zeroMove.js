@@ -21,9 +21,8 @@ function a(arr) {
 		return arr
 	} else {
 		arr.push(parseInt(Math.random() * (32 - 2 + 1) + 2, 10))
-		a(arr)
+		a(arr) 
 	}
-
 }
 let x = a([])
 console.log(x);
