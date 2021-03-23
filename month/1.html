@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,386 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 </head>
+
 <body>
-    <script>
-        Cookies.set('name', 'value')
-        Cookies.set('name', 'value2')
-    </script>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .a{
+            height: 100px;
+            background-color: antiquewhite;
+        }
+        .b{
+            background-color: aquamarine;
+           min-height: calc( 100vh - 200px);
+        }
+        .c{
+            background-color: bisque;
+            height: 100px;
+        }
+    </style>
+    <div class="a">a</div>
+    <div class="b">CSDN首页
+    首页
+    博客
+    程序员学院
+    下载
+    论坛
+    问答
+    代码
+    直播
+    能力认证
+    高校
+    c++
+    
+    登录/注册
+    会员中心
+    收藏
+    消息
+    创作中心
+    函数模板简单实现
+    
+    孑澈 2020-05-02 12:56:35 136 收藏
+    分类专栏： 编程 文章标签： c++
+    版权
+    #include<iostream>
+    
+        using namespace std;
+    
+        template<typename T ,void (*f)(T& v)>
+            void foreach(T arr[], unsigned size)
+            {
+            for (size_t i = 0; i < size; i++) { f(arr[i]); } } template<typename T>
+                void print(T& v)
+                {
+                cout << " " << v << " " ; } int main() { int arr[]={ 1,2,3,4,5,6,7,8 }; foreach<int, print<int> > (arr, 8);
+    
+                    cin.get();
+                    return 0;
+                    }
+    
+    
+    
+    
+    
+                    点赞
+    
+                    评论
+    
+                    分享
+    
+                    收藏
+    
+                    打赏
+    
+                    举报
+                    关注
+                    一键三连
+    
+                    在c语言中实现函数模板的例子
+                    成长之路
+                    921
+                    #include #include typedef int ElemType; ElemType add(const void *a,const void *b) { return *((ElemType
+                    *)a)+*((ElemType *)b); } void main() { void *x1,*x2; int a=1,b=2; void *y1="3"
+                    模板模式简单实现
+                    xie__jin__cheng的博客
+                    164
+                    模板模式：在一个函数中调用一组抽象函数，这组抽象函数在子类中实现。 价值就是：通过子类的实现使一个函数（TemplateMethod）的机能丰富。
+                    个人观点：这个模式其实就是一种最常用的面向对象手段，无论你是否学过设计模式，相信您一定用过，
+                    并且您如果看到过其他的模式，一定在其他的模式中发现过，比如创建者模式中创建者（Builder）用到的一系列创建方法，就是一个模板模式的原型。 如下代码（c++...
+    
+    
+                    优质评论可以帮助作者获得更高权重
+                    表情包
+                    相关推荐
+                    函数模板与类模板的简单实例_SimonDaddy的专栏
+                    2-22
+                    /*函数模板*/ template<typenameType1, class Type2> Type2Max(Type1 a, Type2 b) { returna > b ? a : b; } /*类模板
+                        实现一个容器verctor的简...
+                        函数模板实现快排_ZHangFFYY的博客
+                        12-25
+                        函数模板实现快排 函数模板可以用来创建一个通用的函数,以支持多种不同的形参,避免重载函数的函数体重复设计。它的最大特点是把函数使用的数据类型作为参数。
+                        C++模板的实现（模板函数和模板类，附带模板实现顺序表和链表代码）
+                        龙跃十二
+                        2058
+                        模板 一、模板函数 模板函数的格式： 模板参数隐式实例化 模板参数显示实例化 二、模板类 模板类的格式 模板类示例 模板  当我们实现一个交换函数时，我们可以写成如下。 void
+                        Swap(int&amp; x, int&amp; y) { int tmp = x; x = y; y = tmp; }  这里只能交换两个整数...
+                        C++ 模板函数和模板类的实现
+                        张俊杰的博客
+                        1812
+                        学习C++模板时练习的代码。 模板函数： template void swapNum(T &a, T &b) { T temp; temp = b; b = a; a = temp; } 调用的时候：
+                        int aa = 5, bb = 6; swapNum(aa, bb); cout 模板类相对复杂，注意3点： （1）必须将类中方法的声明和定义都写在头文
+                        函数模板实现的机制_vinnyjia的博客
+                        2-10
+                        编译器会对函数模板进行两次编译,在声明的地方对模板代码本身进行编译,在调用的地方对参数替换后 的代码进行编译。编译器根据函数的调用情况,产生具体的函数,这个具体...
+                        C语言实现函数模板_xey_csu的专栏
+                        2-25
+                        C语言实现函数模板 #include"stdafx.h" #defineMY_GETMAX(type) \ type type##GetMax(type x,type y)\ {\ return x
+                        > y ? x : y;\...
+                        C++ 模板函数 讲解及实现
+                        weixin_44176696的博客
+                        194
+                        目录模板函数：机制介绍模板函数：实现代码 模板函数：机制介绍 在很多时候，我们需要对不同的数据类型做一些操作，但是这些操作是相同的，比如求取一个数组中的最大元素，我们只需： for(int i=0;
+                        i<arr.size(); i++) if(arr[i]> max_val) max_val = arr[i];
+                            可是面对不同的数据类型，我们需要实现不同的函数，比如下面我们需要实现两个函数来选择int或者double数组中的最大值，非常麻烦 int array_max(vector<i
+                                函数模板的简单知识 weixin_45836151的博客 48 交换两个变量的方法有宏定义和函数，他们有各自的优缺点： （1）宏定义： 优：代码重复，适合所有类型
+                                缺：缺少类型检查，宏在预处理阶段就被换，编译器不知道，用宏不安全。 （2）函数： 优：真正的函数调用，编译器会对类型检查，相较于宏安全。 缺：不同类型需要重复定义函数，代码无法复用。
+                                针对以上，C++存在泛型编程，不用考虑具体数据类型。 函数模板的编译 1.定义点 模板的头部 2.调用点 模板的实例化后的模板函数 <>模板类型参数列表 T类型 万能的类型 虚假的类型
+                                templat
+                                用函数实现模板化程序设计_zhongmomo的博客
+                                3-2
+                                例7.1 想要输出以下结果,用函数调用实现。 *** How do you do! *** 例7.2 输入俩个整数,要求输出其中值较大者。要求用函数来找到大数。 例7.3 将例...
+                                C++ 函数模板&类模板详解_Stay Hungry
+                                3-19
+                                人们需要编写多个形式和功能都相似的函数,因此有了函数模板来减少重复劳动;人们也需要编写多个形式和功能都相似的类,于是C++引入了类模板的概念,编译器从类模板可以...
+                                函数模板概念及实现原理
+                                askunix
+                                1399
+                                函数模板概念及实现原理 C++为我们提供了函数模板机制。所谓函数模板，实际上是建立一个通用函数，其函数类型和形参类型不具体指定，用一个虚拟的类型来代表。这个通用函数就称为函数模板。
+                                换一种说法：模板是对类型的参数化，对函数类型（包括返回类型和参数类型）进行参数化，就可以使用函数处理某个类型范围的若干种类型的对象，而函数体则不需要改变。
+                                凡是函数体相同的函数都可以用这个模板来代替，
+                                C++函数模板及实现原理
+                                常敲代码手不抖
+                                1万+
+                                C++为我们提供了函数模板机制。所谓函数模板，实际上是建立一个通用函数，其函数类型和形参类型不具体指定，用一个虚拟的类型来代表。这个通用函数就称为函数模板。
+                                凡是函数体相同的函数都可以用这个模板来代替，不必定义多个函数，只需在模板中定义一次即可。在调用函数时系统会根据实参的类型来取代模板中的虚拟类型，从而实现了不同函数的功能。
+                                为什么要有函数模板 下面，我们就通过一个例子来说
+                                关于模板函数声明与定义的问题
+                                csy的博客
+                                1万+
+                                c++
+                                primer上说：c++模板函数的声明与定义通常放在头文件中，而普通的函数通常是声明放在头文件中，定义放在源文件中，为什么会有这样的区别呢？模板函数与普通成员函数到底有什么区别？
+                                测试代码： tem.h #ifndef _TEM_H #define _TEM_H template T add(T a,T b); //{ //return a+b; //}
+                                60行代码实现简单模板语法
+                                weixin_34321977的博客
+                                126
+                                不久前看过一篇不错的文章，作者用了15行代码就实现了一个简单的模板引擎，我觉得很有趣，建议在读这篇文章之前先看一下这个，这里是传送门：只有20行的Javascript模板引擎
+                                这个模板引擎实现的核心点是利用正则表达式来匹配到模板语法里面的变量和JS语句，再将这些匹配到的字段push到一个数组中，最后连接起来，用Function来解析字符串，最后将执行后的结果放到指定DOM节点的innerHTML里...
+                                编写一个简单的JavaScript模板引擎
+                                weixin_34082854的博客
+                                77
+                                本文首发于我的知乎专栏，转发于掘金。若需要用于商业用途，请经本人同意。尊重每一位认真写文章的前端大佬，文末给出了本人思路的参考文章。前言能够访问到这篇文章的同学，初衷是想知道如何编写JavaScript的模板引擎。为了照顾一些没有使用过模板引擎的同学，先来稍微介绍一下什么叫模板引擎。如果没有使用过模板引擎，但是又尝试过在页面渲染一个列表的时候，那么一般的做法是通过拼接字符串实现的，如下：const...
+                                一行代码实现一个简单的模板字符串替换
+                                weixin_34138521的博客
+                                148
+                                起始 同许多初学 Javascript 的菜鸟一样，起初，我也是采用拼接字符串的形式，将 JSON 数据嵌入 HTML
+                                中。开始时代码量较少，暂时还可以接受。但当页面结构复杂起来后，其弱点开始变得无法忍受起来： 书写不连贯。每写一个变量就要断一下，插入一个 + 和 "。十分容易出错。 无法重用。HTML
+                                片段都是离散化的数据，难以对其中...
+                                python入门总结
+                                incredibleimpact的博客
+                                8893
+                                第一章 一.输出函数print 1.print函数会自动换行 >>>print(1) >>>print(2) 1 2 如果想要同一行输出,需要手动修改end值
+                                >>>print(1,2) >>>print(1,end='') >>>print(2) 12 12 end可以等于任意字符串 >>>print(1,end="**")
+                                >>>print(2) 1**2 2.print输
+                                企业员工角色权限管理平台（SpringBoot2.0+Mybatis+Shiro+Vue）
+                                08-07
+                                <p> <strong><span style="font-size:24px;">课程简介：</span></strong><br /> <span
+                                        style="font-size:18px;">历经半个多月的时间，</span><span
+                                        style="font-size:18px;">Debug</span><span style="font-size:18px;">亲自撸的
+                                        “企业员工角色权限管理平台”
+                                        终于完成了。正如字面意思，本课程讲解的是一个真正意义上的、企业级的项目实战，主要介绍了企业级应用系统中后端应用权限的管理，其中主要涵盖了六大核心业务模块、十几张数据库表。</span><span></span>
+                                </p>
+                                <p> <span
+                                        style="font-size:18px;">其中的核心业务模块主要包括用户模块、部门模块、岗位模块、角色模块、菜单模块和系统日志模块；与此同时，</span><span
+                                        style="font-size:18px;">Debug</span><span
+                                        style="font-size:18px;">还亲自撸了额外的附属模块，包括字典管理模块、商品分类模块以及考勤管理模块等等，主要是为了更好地巩固相应的技术栈以及企业应用系统业务模块的开发流程！</span><span></span>
+                                </p>
+                                <p> <br /> </p>
+                                <p> <span style="font-size:24px;"><strong>核心技术栈列表</strong></span><span
+                                        style="font-size:24px;"><strong>：</strong></span> </p>
+                                <p> <br /> </p>
+                                <p> <span style="font-size:18px;">值得介绍的是，本课程在技术栈层面涵盖了前端和后端的大部分常用技术，包括</span><span
+                                        style="font-size:18px;">Spring Boot</span><span
+                                        style="font-size:18px;">、</span><span style="font-size:18px;">Spring MVC</span><span
+                                        style="font-size:18px;">、</span><span style="font-size:18px;">Mybatis</span><span
+                                        style="font-size:18px;">、</span><span
+                                        style="font-size:18px;">Mybatis-Plus</span><span
+                                        style="font-size:18px;">、</span><span style="font-size:18px;">Shiro(</span><span
+                                        style="font-size:18px;">身份认证与资源授权跟会话等等</span><span
+                                        style="font-size:18px;">)</span><span style="font-size:18px;">、</span><span
+                                        style="font-size:18px;">Spring AOP</span><span
+                                        style="font-size:18px;">、防止</span><span style="font-size:18px;">XSS</span><span
+                                        style="font-size:18px;">攻击、防止</span><span style="font-size:18px;">SQL</span><span
+                                        style="font-size:18px;">注入攻击、过滤器</span><span
+                                        style="font-size:18px;">Filter</span><span style="font-size:18px;">、验证码</span><span
+                                        style="font-size:18px;">Kaptcha</span><span
+                                        style="font-size:18px;">、热部署插件</span><span
+                                        style="font-size:18px;">Devtools</span><span style="font-size:18px;">、</span><span
+                                        style="font-size:18px;">POI</span><span style="font-size:18px;">、</span><span
+                                        style="font-size:18px;">Vue</span><span style="font-size:18px;">、</span><span
+                                        style="font-size:18px;">LayUI</span><span style="font-size:18px;">、</span><span
+                                        style="font-size:18px;">ElementUI</span><span style="font-size:18px;">、</span><span
+                                        style="font-size:18px;">JQuery</span><span style="font-size:18px;">、</span><span
+                                        style="font-size:18px;">HTML</span><span style="font-size:18px;">、</span><span
+                                        style="font-size:18px;">Bootstrap</span><span style="font-size:18px;">、</span><span
+                                        style="font-size:18px;">Freemarker</span><span
+                                        style="font-size:18px;">、一键打包部署运行工具</span><span
+                                        style="font-size:18px;">Wagon</span><span
+                                        style="font-size:18px;">等等，如下图所示：</span><span></span> </p> <img
+                                    src="https://img-bss.csdn.net/201908070402564453.png" alt="" />
+                                <p> <br /> </p>
+                                <p> <br /> </p>
+                                <p> <br /> </p>
+                                <p> <span style="font-size:24px;">课程内容与收益</span><span
+                                        style="font-size:24px;">：</span><span></span> </p>
+                                <p> <br /> </p>
+                                <p> <img src="https://img-bss.csdn.net/201908070403452052.png" alt="" /> </p>
+                                <p> <span style="font-size:18px;">总的来说，</span><span
+                                        style="font-size:18px;">本课程是一门具有很强实践性质的“项目实战”课程，即“</span><span
+                                        style="font-size:18px;">企业应用员工角色权限管理平台</span><span
+                                        style="font-size:18px;">”，主要介绍了当前企业级应用系统中员工、部门、岗位、角色、权限、菜单以及其他实体模块的管理；其中，还重点讲解了如何基于</span><span
+                                        style="font-size:18px;">Shiro</span><span
+                                        style="font-size:18px;">的资源授权实现员工</span><span style="font-size:18px;">-</span><span
+                                        style="font-size:18px;">角色</span><span style="font-size:18px;">-</span><span
+                                        style="font-size:18px;">操作权限、员工</span><span style="font-size:18px;">-</span><span
+                                        style="font-size:18px;">角色</span><span style="font-size:18px;">-</span><span
+                                        style="font-size:18px;">数据权限的管理；在课程的最后，还介绍了如何实现一键打包上传部署运行项目等等。如下图所示为本权限管理平台的数据库设计图：</span>
+                                </p>
+                                <p> <span></span> </p>
+                                <p> <br /> </p>
+                                <p> <img src="https://img-bss.csdn.net/201908070404285736.png" alt="" /> </p>
+                                <p> <br /> </p>
+                                <p> <br /> </p>
+                                <p> <br /> </p>
+                                <p> <span style="font-size:18px;"><strong>以下为项目整体的运行效果截图：</strong></span> <span></span> </p>
+                                <img src="https://img-bss.csdn.net/201908070404538119.png" alt="" />
+                                <p> <br /> </p>
+                                <p> <img src="https://img-bss.csdn.net/201908070405002904.png" alt="" /> </p>
+                                <p> <br /> </p>
+                                <p> <br /> </p>
+                                <p> <img src="https://img-bss.csdn.net/201908070405078322.png" alt="" /> </p>
+                                <p> <br /> </p>
+                                <p> <img src="https://img-bss.csdn.net/201908070405172638.png" alt="" /> </p>
+                                <p> <br /> </p>
+                                <p> <img src="https://img-bss.csdn.net/201908070405289855.png" alt="" /> </p>
+                                <p> <br /> </p>
+                                <p> <img src="https://img-bss.csdn.net/201908070405404509.png" alt="" /> </p>
+                                <p> <br /> </p>
+                                <p> <img src="https://img-bss.csdn.net/201908070405523495.png" alt="" /> </p>
+                                <p> <br /> </p>
+                                <p> <br /> </p>
+                                <p> <br /> </p>
+                                <p style="text-align:left;"> <span style="font-size:18px;">值得一提的是，在本课程中，</span><span
+                                        style="font-size:18px;">Debug</span><span
+                                        style="font-size:18px;">也向各位小伙伴介绍了如何在企业级应用系统业务模块的开发中，前端到后端再到数据库，最后再到服务器的上线部署运行等流程，如下图所示：</span><span></span>
+                                </p> <img src="https://img-bss.csdn.net/201908070406328884.png" alt="" />
+                                <p> <br /> </p>
+                                Java并发编程精讲
+                                09-28
+                                课程会讲解Java中并发相关技术的基础、原理和应用，从线程安全、线程(池)，<br /> 锁实现和并发容器等高并发Java实现，去深入理解在并发编程中，<br />
+                                一些最容易被忽视的点，这些点也是我在多年编程经验中实际用到，<br /> 对于每个小节小课均会有实际的场景应用为你呈现。<br />
+                                同时这些也是面试过程中面试官考察的重点，掌握这些点，面试和工作时，做到心中有货，不慌不乱，能够胜任。<br />
+                                Python入门基础教程全套.ppt
+                                04-22
+                                Python入门基础
+                                ©️2020 CSDN 皮肤主题: 精致技术 设计师:CSDN官方博客 返回首页
+                                关于我们
+                                招贤纳士
+                                广告服务
+                                开发助手
+    
+                                400-660-0108
+    
+                                kefu@csdn.net
+    
+                                在线客服
+                                工作时间 8:30-22:00
+                                公安备案号11010502030143
+                                京ICP备19004658号
+                                京网文〔2020〕1039-165号
+                                经营性网站备案信息
+                                北京互联网违法和不良信息举报中心
+                                网络110报警服务
+                                中国互联网举报中心
+                                家长监护
+                                Chrome商店下载
+                                ©1999-2021北京创新乐知网络技术有限公司
+                                版权与免责声明
+                                版权申诉
+    
+                                孑澈
+                                码龄6年
+                                暂无认证
+                                77
+                                原创
+                                -
+                                周排名
+                                4万+
+                                总排名
+                                15万+
+                                访问
+    
+                                等级
+                                2283
+                                积分
+                                20
+                                粉丝
+                                25
+                                获赞
+                                7
+                                评论
+                                80
+                                收藏
+                                私信
+                                关注
+                                搜博主文章
+    
+                                热门文章
+                                c语言简单创建二叉树 14238
+                                66.6 设计一个雇员类 employee，存储雇员的姓名、编号和生日等信息，要求该类使用 上一题设计的日期类作为成员对象。雇员类的使用如下： //定义一个雇员，其雇员号为
+                                10，生日为 1970 年 10871
+                                11.8 编写一个程序，有一个汽车类 vehicle，它具有一个需传递参数的构造函数，类 中的数据成员：车轮个数 wheels 和车重 weight 放在保护段中；小车类 car
+                                是它的私有派生 类， 9822
+                                问题：求两个字符串的最长公共子串。 要求：输入两个字符串，输出它们的最长公共子串，包括长度。 7935
+                                3.9 利用下列公式编程计算π的值： 7389
+                                分类专栏
+    
+                                编程
+                                53篇
+    
+                                数据结构与算法
+                                15篇
+    
+                                Tcp/ip
+                                1篇
+    
+                                FaceTest
+                                2篇
+    
+                                QT
+                                最新评论
+                                11.8 编写一个程序，有一个汽车类 vehicle，它具有一个需传递参数的构造函数，类 中的数据成员：车轮个数 wheels 和车重 weight 放在保护段中；小车类 car
+                                是它的私有派生 类，
+                                后端翻车司机: 挺好
+    
+                                2.4 设计评选优秀教师和学生的程序，其类结构如图 12.5 所示。当输入一系列教师 或学生的记录后，将优秀学生及教师的姓名列出来。 图 12.5 类结构 类 base char
+                                name[8]; 含
+                                小小付同学: 第15行strcpy跳错了
+    
+                                问题：利用输入输出流重载实现一个整数数组的输入和输出。 要求：输入一个数组大小 及 所有元素的值，排序后输出该数组的所有元素。
+                                十里连城: 请问一下，重载流操作符不都是返回该类引用吗，为什么返回void
+    
+                                编写一个密码类，其中包含一个 str 密码字符串私有成员数据，一个“==”运算 符重载成员函数，用于比较用户输入的密码是否正确。并用数据测试该类。
+                                Jolin: 兄弟！！！你的代码运行不了！！！求求你救救孩子吧。
+    
+                                c语言简单实现 冒泡，插入，选择，归并排序
+                                qq_42074674: 你们老师没有教你写注释吗？
+    
+                                最新文章
+                                模板型模板参数报错，无法调试通过，---《深入实践c++模板》例子
+                                QT实现实时增加 删除 读取 XML文件
+                                插入排序-----希尔排序---升级版插入
+                                2020年2篇2018年1篇2017年1篇2016年75篇2014年2篇
+    
+    
+    
+    
+    
+                                举报</div>
+    <div class="c">c</div>
 </body>
+
 </html>
