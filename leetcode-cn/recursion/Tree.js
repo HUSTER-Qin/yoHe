@@ -2,7 +2,7 @@ class Node {
     constructor(value) {
         this.val = value
         this.left = null
-        this.next = null
+        this.right = null
     }
 }
 
@@ -25,11 +25,11 @@ class Tree {
                 current = current.left
             } else {
                
-                if (!current.next) {
-                    current.next = new Node(val)
+                if (!current.right) {
+                    current.right = new Node(val)
                     return
                 }
-                current = current.next
+                current = current.right
             }
         }
     }
