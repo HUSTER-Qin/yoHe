@@ -1,14 +1,22 @@
 /**
- * @param {number[]} nums1
- * @param {number[]} nums2
- * @return {number[]}
+ * @param {number} x
+ * @param {number} n
+ * @return {number}
  */
-var intersect = function (nums1, nums2) {
+var myPow = function (x, n) {
+    let len = n
+    if (n < 0) {
+        x = 1 / x
+        len = -n
+    }
+    let result = 1
 
-    let map1 = new Map()
-    nums1.map((item, index) => map1.set(item, index))
-    
-    
+    for (let i = 0; i < len; i++) {
+        result = result * x
+    }
+    console.log(result);
+    return result
 };
 
-intersect([1, 2, 2, 1], [2])
+
+myPow(2.00000 , - 2147483648)
