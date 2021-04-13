@@ -5,4 +5,4 @@ function foo(a,b,c,d) {
     console.log(typeof arguments);
     console.log(arguments);
  } 
- new foo("a","b","c","d"); 
+ new foo("a","b","c","f"); 
