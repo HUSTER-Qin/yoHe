@@ -27,3 +27,6 @@ const throttle = function (fn, time) {
        
     }
 }
+
+
+
