@@ -16,7 +16,7 @@ function deepClone(target) {
     if (typeof target === 'object') {
         if (typeof target === "function") {
             return target
-        }
+        } 
         if (map.get(target)) {
             return map.get(target)
         }
