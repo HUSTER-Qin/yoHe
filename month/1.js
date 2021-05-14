@@ -28,3 +28,5 @@ let a = [[5, 2], [4, 9], [3, 6]]
 // let a = [[1,7] ,[8,9], [10,11]]
 console.log(getIntersection(a));
 // 
+
+
