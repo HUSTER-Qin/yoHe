@@ -13,6 +13,9 @@ function curry(fn, args = []) {
 function add(a, b, c) {
     return a + b + c;
 }
+
+
+
 var add1 = curry(add);
 console.log(add1(2)(3)(4));
 console.log(add1(2, 3, 4));

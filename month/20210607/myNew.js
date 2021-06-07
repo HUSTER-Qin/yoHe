@@ -17,6 +17,8 @@ function Person() {
 
 }
 
+
+
 let c = new Person()
 let d = myNew(Person)
 
