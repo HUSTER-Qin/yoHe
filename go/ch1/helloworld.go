@@ -9,5 +9,4 @@ func main() {
 
 	fmt.Print("susd")
 	time.After(100)
-	
 }
